@@ -12,11 +12,11 @@ export default function Video() {
         (state) => state.video
     );
     const dispatch = useDispatch();
-    const { videoId } = useParams();
+    const { id} = useParams();
 
     useEffect(() => {
-        dispatch(fetchVideo(videoId));
-    }, [dispatch, videoId]);
+        dispatch(fetchVideo(id));
+    }, [dispatch, id]);
 
     const { _id, link, title, tags } = video || {};
 
@@ -27,11 +27,11 @@ export default function Video() {
     if (!isLoading && isError)
         content = <div className="col-span-12">{error}</div>;
 
-    if (!isLoading && !isError && !video?.id) {
+    if (!isLoading && !isError && !video?._id) {
         content = <div className="col-span-12">No video found!</div>;
     }
 
-    if (!isLoading && !isError && video?.id) {
+    if (!isLoading && !isError && video?._id) {
         content = (
             <div className="grid grid-cols-3 gap-2 lg:gap-8">
                 <div className="col-span-full w-full space-y-8 lg:col-span-2">

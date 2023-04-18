@@ -26,13 +26,13 @@ const videoSlice = createSlice({
             })
             .addCase(fetchVideo.fulfilled, (state, action) => {
                 state.isLoading = false;
-                state.videos = action.payload;
+                state.video = action.payload;
             })
             .addCase(fetchVideo.rejected, (state, action) => {
                 state.isLoading = false;
-                state.video = {};
                 state.isError = true;
                 state.error = action.error?.message;
+                state.video = {};
             });
     },
 });
